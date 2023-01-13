@@ -37,6 +37,9 @@ public class HomeUsersSignUpPage extends FooterMenuPage {
     @FindBy(xpath = "//input[@value='Create Account']")
     private WebElement createAccountButton;
 
+    @FindBy(xpath = "//div[contains(text(),'Privacy Centre')]/a[.='Privacy Policy']")
+    private WebElement privacyPolicy;
+
     public HomeUsersSignUpPage(WebDriver driver) {
         super(driver);
     }
@@ -97,5 +100,9 @@ public class HomeUsersSignUpPage extends FooterMenuPage {
         click(createAccountButton);
 
         return new HomeUsersPage(getDriver());
+    }
+
+    public void clickPrivacyPolicy() {
+        click(privacyPolicy);
     }
 }

@@ -292,4 +292,9 @@ public abstract class BasePage {
     public void waitForGreyContainerDisappeared(WebElement element) {
         getWait20().until(ExpectedConditions.invisibilityOf(element));
     }
+
+    public void switchToExternalPage() {
+        switchToAnotherWindow();
+        getWait20().until(ExpectedConditions.numberOfWindowsToBe(2));
+    }
 }

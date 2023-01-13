@@ -467,11 +467,6 @@ public class MainPage extends FooterMenuPage {
         click(getApiIcons().get(index));
     }
 
-    public void switchToExternalPage() {
-        switchToAnotherWindow();
-        getWait20().until(ExpectedConditions.numberOfWindowsToBe(2));
-    }
-
     public MainPage scrollToFooterMenu() {
         scrollByVisibleElement(getFooterMenu());
 
