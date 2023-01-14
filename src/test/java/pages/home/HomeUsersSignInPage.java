@@ -21,6 +21,8 @@ public class HomeUsersSignInPage extends FooterMenuPage {
     private WebElement clickHereToRecoverLink;
     @FindBy(xpath = "//h3")
     private WebElement h3Header;
+    @FindBy(xpath = "//div[@id='desktop-menu']//li[@class='user-li']/a")
+    private WebElement signInTopMenu;
 
     public HomeUsersSignInPage(WebDriver driver) {
         super(driver);
@@ -36,6 +38,11 @@ public class HomeUsersSignInPage extends FooterMenuPage {
         return getText(h3Header);
     }
 
+    public String getSignInText() {
+
+        return getText(signInTopMenu);
+    }
+
     public HomeUsersSignInPage clickClearInputRegularUserEmail() {
         click(userEmail);
         userEmail.clear();
@@ -49,6 +56,14 @@ public class HomeUsersSignInPage extends FooterMenuPage {
         click(userPassword);
         userPassword.clear();
         String password = "Tester12#";
+        input(password, userPassword);
+
+        return this;
+    }
+
+    public HomeUsersSignInPage clickClearInputRegularUserPassword(String password) {
+        click(userPassword);
+        userPassword.clear();
         input(password, userPassword);
 
         return this;
