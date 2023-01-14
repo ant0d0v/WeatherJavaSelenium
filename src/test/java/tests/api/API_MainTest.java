@@ -12,7 +12,6 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 import pages.MainPage;
-import tests.retrytest.Retry;
 import utils.DateTimeUtils;
 
 import java.io.IOException;
@@ -106,7 +105,7 @@ public class API_MainTest extends BaseTest {
                 .contains("openweathermap.org/data/2.5/onecall?lat=48.8534&lon=2.3488"));
     }
 
-    @Test(retryAnalyzer = Retry.class)
+    @Test
     public void test_API_HttpRequestResponse_WhenSearchingCityCountry() {
         try {
             final HttpRequest request = HttpRequest.newBuilder()
@@ -129,7 +128,7 @@ public class API_MainTest extends BaseTest {
 
         final JSONObject obj = new JSONObject(response.body());
         final JSONArray weather = obj.getJSONArray("weather");
-        for (int i = 0; i < weather.length(); i++) {
+        for (int i = 0; i < weather.length(); i+=2) {
             JSONObject item = weather.getJSONObject(i);
             if (item.keySet().contains("description")) {
                 weatherDescription = (String) item.get("description");
@@ -164,8 +163,8 @@ public class API_MainTest extends BaseTest {
         Reporter.log(String.valueOf(actualUIWeatherCondition), true);
 
         Assert.assertEquals(actualUIWeatherCondition.get(1), expectedCityCountry);
-        //Assert.assertEquals(actualUIWeatherCondition.get(2), expectedCurrentTemp);
-        //Assert.assertEquals(actualUIWeatherCondition.get(3).substring(0, expectedFeelsLike.length()), expectedFeelsLike);
+        Assert.assertEquals(actualUIWeatherCondition.get(2), expectedCurrentTemp);
+        Assert.assertEquals(actualUIWeatherCondition.get(4).substring(0, expectedFeelsLike.length()), expectedFeelsLike);
     }
 
     @Test
