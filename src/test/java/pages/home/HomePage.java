@@ -54,6 +54,11 @@ public class HomePage extends HomeTopMenuPage {
         return getTexts(h2Headers);
     }
 
+    public String getUserMenuText() {
+
+        return getText(userTopMenu);
+    }
+
     public HomePage clickUserNameMenu() {
         click(userTopMenu);
 

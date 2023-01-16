@@ -103,6 +103,6 @@ public class HomeUsersSignUpPage extends FooterMenuPage {
     }
 
     public void clickPrivacyPolicy() {
-        click(privacyPolicy);
+        click20(privacyPolicy);
     }
 }

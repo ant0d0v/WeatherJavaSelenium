@@ -52,6 +52,14 @@ public class HomeUsersSignInPage extends FooterMenuPage {
         return this;
     }
 
+    public HomeUsersSignInPage clickClearInputRegularUserEmail(String email) {
+        click(userEmail);
+        userEmail.clear();
+        input(email, userEmail);
+
+        return this;
+    }
+
     public HomeUsersSignInPage clickClearInputRegularUserPassword() {
         click(userPassword);
         userPassword.clear();

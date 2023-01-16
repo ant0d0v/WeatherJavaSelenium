@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.home.HomePage;
+import pages.home.HomeUsersSignInPage;
 
 import java.util.List;
 
@@ -52,5 +53,29 @@ public class HomeTest extends BaseTest {
         }
 
         Assert.assertEquals(count, orangeButtons.size());
+    }
+
+    @Test
+    public void testLogInWithEmailIsNotCaseSensitive() {
+        final String expectedNoticeMessage = "Signed in successfully.";
+        final String expectedUserMenuText = "Tester";
+        final String userEmail = "jKA59433@xcOxc.com";
+
+        final String signInMenuText = openBaseURL()
+                .clickSignInMenu()
+                .getSignInText();
+
+        new HomeUsersSignInPage(getDriver())
+                .clickClearInputRegularUserEmail(userEmail)
+                .clickClearInputRegularUserPassword()
+                .clickSubmitButton();
+
+        HomePage homePage = new HomePage(getDriver());
+        String actualNoticeMessage = homePage.getNotification();
+        String actualUserMenuText = homePage.getUserMenuText();
+
+        Assert.assertEquals(actualNoticeMessage, expectedNoticeMessage);
+        Assert.assertNotEquals(actualUserMenuText, signInMenuText);
+        Assert.assertEquals(actualUserMenuText, expectedUserMenuText);
     }
 }
