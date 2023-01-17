@@ -3,6 +3,7 @@ package tests;
 import base.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.home.HomePage;
 import pages.home.HomeUsersSignInPage;
@@ -77,5 +78,25 @@ public class HomeTest extends BaseTest {
         Assert.assertEquals(actualNoticeMessage, expectedNoticeMessage);
         Assert.assertNotEquals(actualUserMenuText, signInMenuText);
         Assert.assertEquals(actualUserMenuText, expectedUserMenuText);
+    }
+
+    @Test
+    public void testSignInNavigatesToHomePage() {
+        final String expectedURL = "https://home.openweathermap.org/";
+        final String expectedTitle = "Members";
+
+        final String oldURL = openBaseURL()
+                .getCurrentURL();
+
+        String actualURL = new HomeUsersSignInPage(getDriver())
+                .signIn()
+                .getCurrentURL();
+
+        String actualTitle = new HomePage(getDriver())
+                .getTitle();
+
+        Assert.assertNotEquals(actualURL, oldURL);
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 }
