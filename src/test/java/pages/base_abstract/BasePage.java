@@ -297,4 +297,15 @@ public abstract class BasePage {
         switchToAnotherWindow();
         getWait20().until(ExpectedConditions.numberOfWindowsToBe(2));
     }
+
+    public List<WebElement> getAllHTTPSLinks(List<WebElement> allLinks) {
+        List<WebElement> linksList = new ArrayList<>();
+
+        for (WebElement link : allLinks) {
+            if (link.getAttribute("protocol").equals("https:")) {
+                linksList.add(link);
+            }
+        }
+        return linksList;
+    }
 }

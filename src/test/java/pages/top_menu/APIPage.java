@@ -16,6 +16,9 @@ public class APIPage extends BreadCrumbPage {
     @FindBy(xpath = "//a[@href='/api/one-call-3'][text()='API doc']")
     private WebElement APIDocButton;
 
+    @FindBy(xpath = "//a[@href]")
+    private List<WebElement> links;
+
     public APIPage(WebDriver driver) {
         super(driver);
     }
@@ -29,5 +32,10 @@ public class APIPage extends BreadCrumbPage {
         click(APIDocButton);
 
         return new APIOneCall3Page(getDriver());
+    }
+
+    public List<WebElement> getHTTPSLinks() {
+
+        return getAllHTTPSLinks(links);
     }
 }
