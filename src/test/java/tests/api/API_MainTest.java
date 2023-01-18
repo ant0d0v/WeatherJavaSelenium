@@ -77,7 +77,6 @@ public class API_MainTest extends BaseTest {
         for (int i = 2; i < responses.size(); i += 4) {
             Assert.assertTrue(responses.get(i).contains("openweathermap.org/"));
         }
-
         Assert.assertTrue(Double.parseDouble(responses.get(3).substring(10, 14)) <= 3);
     }
 
@@ -416,5 +415,37 @@ public class API_MainTest extends BaseTest {
                 .getCurrentPressure();
 
         Assert.assertEquals(pressureInParisFromUI, pressureInParisFromAPI);
+    }
+
+    @Test
+    public void test_API_HttpResponse_CurrentHumidityInParis() {
+        try {
+            final HttpRequest request = HttpRequest.newBuilder()
+                    .uri(new URI(PARIS_URL_ONECALL))
+                    .GET()
+                    .build();
+
+            response = HttpClient.newHttpClient()
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+
+        } catch (URISyntaxException | InterruptedException | IOException e) {
+            e.printStackTrace();
+        }
+        Assert.assertNotNull(response);
+        Assert.assertNotNull(response.body());
+        Assert.assertEquals(response.statusCode(), 200);
+
+        final String humidityInParisFromAPI = ApiHelpers.getCurrentHumidity(new JSONObject(response.body()));
+        final String oldCityName = openBaseURL().getCityCountryName();
+
+        String humidityInParisFromUI = new MainPage(getDriver())
+                .clickSearchCityField()
+                .inputSearchCriteria("Paris")
+                .clickSearchButton()
+                .clickParisInDropDownList()
+                .waitForCityCountryNameChanged(oldCityName)
+                .getCurrentHumidity();
+        System.out.println(response.body());
+        Assert.assertEquals(humidityInParisFromUI, humidityInParisFromAPI);
     }
 }

@@ -183,6 +183,9 @@ public class MainPage extends FooterMenuPage {
     @FindBy(xpath = "//div[contains(text(), 'Feels like')]")
     private WebElement feelsLikeText;
 
+    @FindBy(xpath = "//ul//li[contains(text(), '%')]")
+    private WebElement currentHumidity;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -621,5 +624,12 @@ public class MainPage extends FooterMenuPage {
     public String getClassAttribute(WebElement element) {
 
         return getAttribute(element, "class");
+    }
+
+    public String getCurrentHumidity() {
+
+        String humidity = getText(currentHumidity);
+
+        return humidity.substring(10, humidity.length() - 1);
     }
 }

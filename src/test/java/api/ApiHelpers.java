@@ -69,4 +69,9 @@ public class ApiHelpers {
 
         return String.valueOf(obj.getJSONObject("current").getInt("pressure"));
     }
+
+    public static String getCurrentHumidity(JSONObject obj) {
+
+        return String.valueOf(obj.getJSONObject("current").getInt("humidity"));
+    }
 }
