@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
 
-public class HomeUsersSignInPage extends FooterMenuPage {
+public class HomeUsersSignInPage extends FooterMenuPage<HomeUsersSignInPage> {
 
     @FindBy(xpath = "//div[@class = 'panel-body']")
     WebElement notification;
@@ -26,6 +26,11 @@ public class HomeUsersSignInPage extends FooterMenuPage {
 
     public HomeUsersSignInPage(WebDriver driver) {
         super(driver);
+    }
+
+    public HomeUsersSignInPage createGeneric() {
+
+        return new HomeUsersSignInPage(getDriver());
     }
 
     public String getNotification() {

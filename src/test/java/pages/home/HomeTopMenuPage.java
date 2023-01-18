@@ -10,7 +10,7 @@ import pages.base_abstract.FooterMenuPage;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class HomeTopMenuPage extends FooterMenuPage {
+public abstract class HomeTopMenuPage<Generic> extends FooterMenuPage<Generic> {
 
     @FindBy(xpath = "//li[@class='user-li']/a")
     private WebElement signInTopMenu;
@@ -21,6 +21,8 @@ public abstract class HomeTopMenuPage extends FooterMenuPage {
     public HomeTopMenuPage(WebDriver driver) {
         super(driver);
     }
+
+    public abstract Generic createGeneric();
 
     public int getHomeTopMenusAmount() {
 

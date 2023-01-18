@@ -3,6 +3,7 @@ package pages.base_abstract;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.MainPage;
 import pages.WeatherStationsPage;
 import pages.footer_menu.AboutUsPage;
@@ -14,7 +15,7 @@ import pages.top_menu.WeatherDashboardPage;
 
 import java.util.List;
 
-public abstract class FooterMenuPage extends TopMenuPage {
+public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
     private static final String FOOTER_MENU_ID = "//div[@id='footer-website']";
 
@@ -88,9 +89,14 @@ public abstract class FooterMenuPage extends TopMenuPage {
     @FindBy(className = "social")
     private WebElement socialPanelFooterMenu;
 
+    @FindBy(xpath = FOOTER_MENU_ID + "//ul/li/a")
+    private List<WebElement> innerFooterMenuLink;
+
     public FooterMenuPage(WebDriver driver) {
         super(driver);
     }
+
+    public abstract Generic createGeneric();
 
     public int getSocialPanelSize() {
 
@@ -126,6 +132,26 @@ public abstract class FooterMenuPage extends TopMenuPage {
     public int getStoresIconsCount() {
 
         return getListSize(storePanelIconsFooterMenu);
+    }
+
+    public List<WebElement> getInnerFooterMenuLinks() {
+
+        return innerFooterMenuLink;
+    }
+
+    public Generic clickFooterMenu(int index) {
+        click(getInnerFooterMenuLinks().get(index));
+        if (getDriver().getWindowHandles().size() > 1) {
+            switchToAnotherWindow();
+        }
+
+        return createGeneric();
+    }
+
+    public void clickFooterMenuExternalLink(int index) {
+        click(getInnerFooterMenuLinks().get(index));
+        switchToAnotherWindow();
+        getWait20().until(ExpectedConditions.numberOfWindowsToBe(2));
     }
 
     public WeatherDashboardPage clickWeatherDashboardFooterMenu() {

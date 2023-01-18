@@ -8,7 +8,7 @@ import pages.base_abstract.FooterMenuPage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BulkPage extends FooterMenuPage {
+public class BulkPage extends FooterMenuPage<BulkPage> {
 
     @FindBy(xpath = "//section[@id='how']/h2")
     private WebElement h2Header;
@@ -19,6 +19,11 @@ public class BulkPage extends FooterMenuPage {
     public BulkPage(WebDriver driver) {
 
         super(driver);
+    }
+
+    public BulkPage createGeneric() {
+
+        return new BulkPage(getDriver());
     }
 
     public String getH2Header() {

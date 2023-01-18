@@ -7,7 +7,7 @@ import pages.base_abstract.FooterMenuPage;
 
 import java.util.List;
 
-public class FindPage extends FooterMenuPage {
+public class FindPage extends FooterMenuPage<FindPage> {
 
     @FindBy(id = "search_str")
     private WebElement searchFieldWeatherInYourCity;
@@ -20,6 +20,11 @@ public class FindPage extends FooterMenuPage {
 
     public FindPage(WebDriver driver) {
         super(driver);
+    }
+
+    public FindPage createGeneric() {
+
+        return new FindPage(getDriver());
     }
 
     public String getSearchFieldValue(String attribute) {

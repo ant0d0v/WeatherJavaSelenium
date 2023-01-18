@@ -4,6 +4,7 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MainPage;
+import pages.TestData;
 import pages.WeatherStationsPage;
 import pages.footer_menu.AboutUsPage;
 import pages.footer_menu.TechnologyPage;
@@ -373,5 +374,43 @@ public class FooterMenuTest extends BaseTest {
                 .getFooterMenuLinksCount();
 
         Assert.assertEquals(actualLinks, expectedLinks);
+    }
+
+    @Test(dataProvider = "FooterMenuData", dataProviderClass = TestData.class)
+    public void testFooterMenuLinksNavigateToCorrespondingPages(
+            int index, String linkName, String href, String expectedURL, String expectedTitle) {
+
+        MainPage mainPage = openBaseURL();
+
+        final String oldURL = mainPage.getCurrentURL();
+        final String oldTitle = mainPage.getTitle();
+
+        String actualURL = mainPage.scrollToFooterMenu().clickFooterMenu(index).getCurrentURL();
+        String actualTitle = getDriver().getTitle();
+
+        Assert.assertNotEquals(oldURL, actualURL);
+        Assert.assertNotEquals(oldTitle, actualTitle);
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test(dataProvider = "ExternalFooterMenuData", dataProviderClass = TestData.class)
+    public void testExternalMenuLinksNavigateToCorrespondingPages(
+            int index, String linkName, String href, String expectedURL, String expectedTitle) {
+
+        MainPage mainPage = openBaseURL();
+
+        final String oldURL = mainPage.getCurrentURL();
+        final String oldTitle = mainPage.getTitle();
+
+        mainPage.scrollToFooterMenu().clickFooterMenuExternalLink(index);
+
+        String actualURL = getExternalPageURL();
+        String actualTitle = getExternalPageTitle();
+
+        Assert.assertNotEquals(oldURL, actualURL);
+        Assert.assertNotEquals(oldTitle, actualTitle);
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 }

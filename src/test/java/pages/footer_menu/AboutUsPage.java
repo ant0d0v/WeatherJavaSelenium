@@ -7,7 +7,7 @@ import pages.base_abstract.FooterMenuPage;
 
 import java.util.List;
 
-public class AboutUsPage extends FooterMenuPage {
+public class AboutUsPage extends FooterMenuPage<AboutUsPage> {
 
     @FindBy(xpath = "//div[@class='about-us']//h1")
     private WebElement aboutUsPageHeader;
@@ -20,6 +20,11 @@ public class AboutUsPage extends FooterMenuPage {
 
     public AboutUsPage(WebDriver driver) {
         super(driver);
+    }
+
+    public AboutUsPage createGeneric() {
+
+        return new AboutUsPage(getDriver());
     }
 
     public List<String> getOptionsText() {

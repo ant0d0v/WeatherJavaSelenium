@@ -8,7 +8,7 @@ import pages.base_abstract.BreadCrumbPage;
 
 import java.util.List;
 
-public class APIPage extends BreadCrumbPage {
+public class APIPage extends BreadCrumbPage<APIPage> {
 
     @FindBy(xpath = "//a[contains(@class,'orange')]")
     private List<WebElement> orangeButtons;
@@ -21,6 +21,11 @@ public class APIPage extends BreadCrumbPage {
 
     public APIPage(WebDriver driver) {
         super(driver);
+    }
+
+    public APIPage createGeneric() {
+
+        return new APIPage(getDriver());
     }
 
     public int getOrangeButtonsAmount() {

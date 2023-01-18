@@ -10,7 +10,7 @@ import pages.base_abstract.BreadCrumbPage;
 
 import java.util.List;
 
-public class GuidePage extends BreadCrumbPage {
+public class GuidePage extends BreadCrumbPage<GuidePage> {
 
     @FindBy(xpath = "//a[@href='/api/solar-radiation']")
     private WebElement solarRadiationLink;
@@ -26,6 +26,11 @@ public class GuidePage extends BreadCrumbPage {
 
     public GuidePage(WebDriver driver) {
         super(driver);
+    }
+
+    public GuidePage createGeneric() {
+
+        return new GuidePage(getDriver());
     }
 
     public int countLearnMoreButtons() {

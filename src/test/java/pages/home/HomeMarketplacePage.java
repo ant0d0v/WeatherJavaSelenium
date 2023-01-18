@@ -7,7 +7,7 @@ import utils.TestUtils;
 
 import java.util.List;
 
-public class HomeMarketplacePage extends HomeFooterMenuPage {
+public class HomeMarketplacePage extends HomeFooterMenuPage<HomeMarketplacePage> {
 
     final static String HOME_MARKETPLACE_BUTTONS_CONTAINER = "//div[@class='button-container']/a";
     final static String DESKTOP_MENU_ID = "//ul[@id='desktop-menu']/li/a";
@@ -26,6 +26,11 @@ public class HomeMarketplacePage extends HomeFooterMenuPage {
 
     public HomeMarketplacePage(WebDriver driver) {
         super(driver);
+    }
+
+    public HomeMarketplacePage createGeneric() {
+
+        return new HomeMarketplacePage(getDriver());
     }
 
     public HomeMarketplacePage switchToMarketplaceWindow() {

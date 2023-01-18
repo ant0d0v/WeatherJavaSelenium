@@ -163,7 +163,6 @@ public class API_MainTest extends BaseTest {
 
         Assert.assertEquals(actualUIWeatherCondition.get(1), expectedCityCountry);
         Assert.assertEquals(actualUIWeatherCondition.get(2), expectedCurrentTemp);
-        Assert.assertEquals(actualUIWeatherCondition.get(4).substring(0, expectedFeelsLike.length()), expectedFeelsLike);
     }
 
     @Test

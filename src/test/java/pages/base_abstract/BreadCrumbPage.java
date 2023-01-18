@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.MainPage;
 
-public abstract class BreadCrumbPage extends FooterMenuPage {
+public abstract class BreadCrumbPage<Generic> extends FooterMenuPage<Generic> {
 
     @FindBy(xpath = "//h1[@class ='breadcrumb-title']")
     private WebElement h1Header;
@@ -16,6 +16,8 @@ public abstract class BreadCrumbPage extends FooterMenuPage {
     public BreadCrumbPage(WebDriver driver) {
         super(driver);
     }
+
+    public abstract Generic createGeneric();
 
     public String getH1Header() {
 

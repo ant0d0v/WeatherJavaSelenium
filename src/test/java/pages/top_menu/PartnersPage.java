@@ -7,7 +7,7 @@ import pages.base_abstract.BreadCrumbPage;
 
 import java.util.List;
 
-public class PartnersPage extends BreadCrumbPage {
+public class PartnersPage extends BreadCrumbPage<PartnersPage> {
 
     @FindBy(xpath = "//a[@href='#apache']")
     private WebElement apacheCamellink;
@@ -20,6 +20,11 @@ public class PartnersPage extends BreadCrumbPage {
 
     public PartnersPage(WebDriver driver) {
         super(driver);
+    }
+
+    public PartnersPage createGeneric() {
+
+        return new PartnersPage(getDriver());
     }
 
     public List<String> getRightSideLinksText() {

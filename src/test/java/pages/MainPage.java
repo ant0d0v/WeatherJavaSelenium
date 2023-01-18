@@ -16,7 +16,7 @@ import java.util.List;
 
 import static utils.TestUtils.convertStringToInt;
 
-public class MainPage extends FooterMenuPage {
+public class MainPage extends FooterMenuPage<MainPage> {
 
     @FindBy(className = "owm-loader-container")
     private WebElement greyContainer;
@@ -188,6 +188,11 @@ public class MainPage extends FooterMenuPage {
 
     public MainPage(WebDriver driver) {
         super(driver);
+    }
+
+    public MainPage createGeneric() {
+
+        return new MainPage(getDriver());
     }
 
     public String getCityCountryName() {

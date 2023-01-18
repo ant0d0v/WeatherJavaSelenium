@@ -9,7 +9,7 @@ import pages.base_abstract.FooterMenuPage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WidgetsPage extends FooterMenuPage {
+public class WidgetsPage extends FooterMenuPage<WidgetsPage> {
 
     @FindBy(id = "api-key")
     private WebElement yourAPIKeyField;
@@ -43,6 +43,11 @@ public class WidgetsPage extends FooterMenuPage {
 
     public WidgetsPage(WebDriver driver) {
         super(driver);
+    }
+
+    public WidgetsPage createGeneric() {
+
+        return new WidgetsPage(getDriver());
     }
 
     public String getCityName() {

@@ -7,7 +7,7 @@ import pages.base_abstract.FooterMenuPage;
 
 import java.util.List;
 
-public class HomeAPIKeysPage extends FooterMenuPage {
+public class HomeAPIKeysPage extends FooterMenuPage<HomeAPIKeysPage> {
 
     @FindBy(id = "api_key_form_name")
     private WebElement inputAPIKeysName;
@@ -35,6 +35,11 @@ public class HomeAPIKeysPage extends FooterMenuPage {
 
     public HomeAPIKeysPage(WebDriver driver) {
         super(driver);
+    }
+
+    public HomeAPIKeysPage createGeneric() {
+
+        return new HomeAPIKeysPage(getDriver());
     }
 
     public String getLastAPIKeyStatus() {

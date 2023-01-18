@@ -8,13 +8,18 @@ import pages.base_abstract.FooterMenuPage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class APIOneCall3Page extends FooterMenuPage {
+public class APIOneCall3Page extends FooterMenuPage<APIOneCall3Page> {
 
     @FindBy(xpath = "//section[@id='how']//tbody/*")
     private List<WebElement> APIOneCall3Parameters;
 
     public APIOneCall3Page(WebDriver driver) {
         super(driver);
+    }
+
+    public APIOneCall3Page createGeneric() {
+
+        return new APIOneCall3Page(getDriver());
     }
 
     public List<String> getADIOneCall3Parameters() {

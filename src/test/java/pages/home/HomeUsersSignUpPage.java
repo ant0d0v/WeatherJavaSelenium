@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
 
-public class HomeUsersSignUpPage extends FooterMenuPage {
+public class HomeUsersSignUpPage extends FooterMenuPage<HomeUsersSignUpPage> {
 
     @FindBy(xpath = "//input[@id='user_username']")
     private WebElement usernameField;
@@ -42,6 +42,11 @@ public class HomeUsersSignUpPage extends FooterMenuPage {
 
     public HomeUsersSignUpPage(WebDriver driver) {
         super(driver);
+    }
+
+    public HomeUsersSignUpPage createGeneric() {
+
+        return new HomeUsersSignUpPage(getDriver());
     }
 
     public HomeUsersSignUpPage clickClearInputNewUsername() {

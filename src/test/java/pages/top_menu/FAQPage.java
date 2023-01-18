@@ -7,7 +7,7 @@ import pages.base_abstract.BreadCrumbPage;
 
 import java.util.List;
 
-public class FAQPage extends BreadCrumbPage {
+public class FAQPage extends BreadCrumbPage<FAQPage> {
 
     @FindBy(xpath = "//section/h3")
     private List<WebElement> H3Headers;
@@ -20,6 +20,11 @@ public class FAQPage extends BreadCrumbPage {
 
     public FAQPage(WebDriver driver) {
         super(driver);
+    }
+
+    public FAQPage createGeneric() {
+
+        return new FAQPage(getDriver());
     }
 
     public List<WebElement> getQuestions() {

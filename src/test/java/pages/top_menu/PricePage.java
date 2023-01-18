@@ -7,7 +7,7 @@ import pages.base_abstract.BreadCrumbPage;
 
 import java.util.List;
 
-public class PricePage extends BreadCrumbPage {
+public class PricePage extends BreadCrumbPage<PricePage> {
 
     @FindBy(xpath = "//a[@class = 'btn_block transparent round']")
     private List<WebElement> transparentButtons;
@@ -35,6 +35,11 @@ public class PricePage extends BreadCrumbPage {
 
     public PricePage(WebDriver driver) {
         super(driver);
+    }
+
+    public PricePage createGeneric() {
+
+        return new PricePage(getDriver());
     }
 
     public String getAlertsH2Header() {

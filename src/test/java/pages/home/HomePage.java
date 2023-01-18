@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class HomePage extends HomeTopMenuPage {
+public class HomePage extends HomeTopMenuPage<HomePage> {
 
     @FindBy(xpath = "//div[@class = 'panel-body']")
     WebElement notification;
@@ -31,6 +31,11 @@ public class HomePage extends HomeTopMenuPage {
 
     public HomePage(WebDriver driver) {
         super(driver);
+    }
+
+    public HomePage createGeneric() {
+
+        return new HomePage(getDriver());
     }
 
     public String getNotification() {

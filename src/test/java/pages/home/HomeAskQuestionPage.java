@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FooterMenuPage;
 
-public class HomeAskQuestionPage extends FooterMenuPage {
+public class HomeAskQuestionPage extends FooterMenuPage<HomeAskQuestionPage> {
 
     @FindBy(id = "question_form_email")
     private WebElement emailTextBox;
@@ -69,6 +69,11 @@ public class HomeAskQuestionPage extends FooterMenuPage {
 
     public HomeAskQuestionPage(WebDriver driver) {
         super(driver);
+    }
+
+    public HomeAskQuestionPage createGeneric() {
+
+        return new HomeAskQuestionPage(getDriver());
     }
 
     public String getErrorMessageText() {

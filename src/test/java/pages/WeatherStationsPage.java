@@ -7,13 +7,18 @@ import pages.base_abstract.FooterMenuPage;
 
 import java.util.List;
 
-public class WeatherStationsPage extends FooterMenuPage {
+public class WeatherStationsPage extends FooterMenuPage<WeatherStationsPage> {
 
     @FindBy(xpath = "//div[@class='doc-container']//nav//li/a")
     private List<WebElement> summaryListWeatherStations;
 
     public WeatherStationsPage(WebDriver driver) {
         super(driver);
+    }
+
+    public WeatherStationsPage createGeneric() {
+
+        return new WeatherStationsPage(getDriver());
     }
 
     public List<String> getSummaryTextsWeatherStations() {
