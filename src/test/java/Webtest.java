@@ -5,6 +5,5 @@ public class Webtest extends BaseTest {
 
     @Test
     public void testTest() {
-
     }
 }
