@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class webTest extends BaseTest {
+public class webTestUi extends BaseTest {
 
     @Test
     public void testH2Text_WhenSearchingCityCountry() throws InterruptedException {
