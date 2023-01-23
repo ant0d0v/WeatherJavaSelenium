@@ -11,7 +11,7 @@ public class WebSearchTest extends BaseTest {
     @Test
     public void testSearchForLanguageByName_HappyPath() {
         final String BASE_URL = "https://www.99-bottles-of-beer.net";
-        final String LANGUAGE_PYTHON = "python";
+        final String LANGUAGE_NAME = "python";
 
         getDriver().get(BASE_URL);
 
@@ -20,9 +20,8 @@ public class WebSearchTest extends BaseTest {
         searchLanguagesMenu.click();
 
         WebElement searchForField = getDriver().findElement(By.name("search"));
-
         searchForField.click();
-        searchForField.sendKeys(LANGUAGE_PYTHON);
+        searchForField.sendKeys(LANGUAGE_NAME);
 
         WebElement goButton = getDriver().findElement(By.name("submitsearch"));
         goButton.click();
@@ -36,7 +35,7 @@ public class WebSearchTest extends BaseTest {
 
         //идем по каждому результату из списка и смотрим содержаться ли в нем контент "python"
         for ( int i = 0; i < languagesNamesList.size(); i++) {
-            Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_PYTHON));
+            Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
 
 
