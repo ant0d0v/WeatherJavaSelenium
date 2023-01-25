@@ -13,4 +13,5 @@ public class SolarRadiationAPIPage extends BreadCrumbPage<SolarRadiationAPIPage>
 
         return new SolarRadiationAPIPage(getDriver());
     }
+
 }

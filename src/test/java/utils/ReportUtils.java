@@ -50,7 +50,7 @@ public class ReportUtils {
         String testName = method.getName();
 
         return className.substring(22, className.length() - 1) + "/" + testName;
-    }git
+    }
 
     public static String getTestStatistics(Method method, ITestResult result) {
 

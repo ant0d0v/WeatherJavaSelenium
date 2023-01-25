@@ -1,6 +1,8 @@
 package base;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
@@ -91,4 +93,34 @@ public abstract class BaseTest {
 
         return getDriver().getCurrentUrl();
     }
+    /*-------------------------------------------------*/
+    public void waitForGrayDisappeared() {
+        getWait().until(ExpectedConditions.invisibilityOfElementLocated(By.className("own-loader-container")));
+
+
+    }
+    public String getText(By by){
+        return getDriver().findElement(by).getText();
+    }
+    public void click (By by){
+
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(by));
+        getWait().until(ExpectedConditions.elementToBeClickable(by)).click();
+
+    }
+
+    public void input (String text, By by){
+        getDriver().findElement(by).sendKeys(text);
+
+    }
+
+    public void elementToBeVisible(By by){
+        getWait().until(ExpectedConditions.visibilityOfElementLocated((by)));
+
+    }
+    public void waitTextChanged (By by, String text ){
+        getWait().until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElement(getDriver().findElement(by), text)));
+
+    }
+
 }
