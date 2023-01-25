@@ -38,7 +38,7 @@ public class ReportUtils {
         String currentDate = "\tDate: "
                 + DateTimeUtils.getCurrentDateTime()
                 + "\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + "\n";
-        String projectName = "\tProject: OpenWeatherJava_05" + "\n";
+        String projectName = "\tProject: Swisscows" + "\n";
         String baseURL = "\tBASE_URL: " + BaseTest.getBaseUrl()
                 + "\t\t\t\t\t\t\t\t\t\t\t" + "\n";
 
@@ -50,7 +50,7 @@ public class ReportUtils {
         String testName = method.getName();
 
         return className.substring(22, className.length() - 1) + "/" + testName;
-    }
+    }git
 
     public static String getTestStatistics(Method method, ITestResult result) {
 
