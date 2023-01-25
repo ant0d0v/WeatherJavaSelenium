@@ -1,3 +1,5 @@
+package tests;
+
 import base.BaseTest;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -30,11 +32,11 @@ public class AlertTest extends BaseTest {
         driver.findElement(by).click();
     }
 
-    private void waitForGrayDisappeared() {
-        getWait().until(ExpectedConditions.invisibilityOfElementLocated(By.className("own-loader-container")));
+//    private void waitForGrayDisappeared() {
+//        getWait().until(ExpectedConditions.invisibilityOfElementLocated(By.className("own-loader-container")));
 
 
-    }
+//    }
 
     private void clickWait(By by, WebDriverWait wait) {
 
@@ -43,9 +45,9 @@ public class AlertTest extends BaseTest {
 
     }
 
-    private String getText(By by, WebDriver driver) {
-        return driver.findElement(by).getText();
-    }
+//    private String getText(By by, WebDriver driver) {
+//        return driver.findElement(by).getText();
+//    }
 
     private List<WebElement> getWebElementList(By by, WebDriver driver) {
         List<WebElement> WebElements = driver.findElements(by);
@@ -98,7 +100,7 @@ public class AlertTest extends BaseTest {
             openBaseURL();
             waitForGrayDisappeared();
             clickWait(DIFFERENT_WEATHER_SWITCH,getWait());
-            String actualPopUpHeader = getText(HEADER_POPUP_DIFFERENT_WEATHER,getDriver());
+            String actualPopUpHeader = getText(HEADER_POPUP_DIFFERENT_WEATHER);
             Assert.assertEquals(actualPopUpHeader,expectedPopUpHeader);
 
 
@@ -140,7 +142,10 @@ public class AlertTest extends BaseTest {
            Assert.assertEquals(actualPopUpIconTexts,DescriptionOfIconInPopUp);
 
 
+
+
         }
+
 
 
 }

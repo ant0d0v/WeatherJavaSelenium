@@ -1,3 +1,5 @@
+package tests;
+
 import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -29,9 +31,9 @@ public class WebSearchTest extends BaseTest {
         getElement(by, driver).click();
     }
 
-    private void input(String text, By by, WebDriver driver) {
-        getElement(by, driver).sendKeys(text);
-    }
+ //   private void input(String text, By by, WebDriver driver) {
+//        getElement(by, driver).sendKeys(text);
+ //   }
 
     private List<WebElement> getListOfElements(By by, WebDriver driver) {
 
@@ -65,7 +67,7 @@ public class WebSearchTest extends BaseTest {
         openBaseUrl(getDriver());
         click(SEARCH_LANGUAGES_MENU,getDriver());
         click(SEARCH_FOR_FIELD,getDriver());
-        input(LANGUAGE_NAME,SEARCH_FOR_FIELD,getDriver());
+        input(LANGUAGE_NAME,SEARCH_FOR_FIELD);
         click(GO_BUTTON,getDriver());
         // весь список результатов поиска помищаем в список
         getListOfElements(LANGUAGES_NAMES_LIST,getDriver());
