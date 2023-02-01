@@ -345,6 +345,17 @@ public class MainPage extends FooterMenuPage<MainPage> {
         return DateTimeUtils.getEightDaysFromDate(dowText, monNum, date, Year.now().getValue());
     }
 
+    public void switchToAnotherWindow() {
+        String originalWindow = getDriver().getWindowHandle();
+
+        for (String windowHandle : getDriver().getWindowHandles()) {
+            if (!originalWindow.equals(windowHandle) && getDriver().getWindowHandles().size() == 2) {
+                getDriver().switchTo().window(windowHandle);
+                break;
+            }
+        }
+    }
+
     public String getH2Header() {
 
         return getText(mainPageHeader2);

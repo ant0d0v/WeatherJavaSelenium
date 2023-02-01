@@ -30,6 +30,8 @@ public abstract class FooterMenuPage<Generic> extends TopMenuPage {
 
     @FindBy(xpath = FOOTER_MENU_ID + "//a[@href='https://openweather.co.uk/privacy-policy']")
     private WebElement privacyPolicyFooterMenu;
+    @FindBy(xpath = FOOTER_MENU_ID + "//a[@href='https://openweather.co.uk/privacy-policy']")
+    private WebElement privacyPolicyFooterMenuu;// ddfs
 
     @FindBy(xpath = FOOTER_MENU_ID + "//a[@href='/about-us']")
     private WebElement aboutUsFooterMenu;
